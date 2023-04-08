@@ -4,19 +4,31 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start:dev": "vite",
+    "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "posts:build": "ts-node --esm --swc scripts/build-posts.ts",
+    "posts:create": "ts-node --esm --swc  scripts/create-post.ts"
   },
   "dependencies": {
+    "@types/react-syntax-highlighter": "^15.5.6",
+    "grey-matter": "^0.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-jss": "^10.10.0",
+    "react-markdown": "^8.0.6",
+    "react-router-dom": "^6.10.0",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
+    "@tbosmans/eslint-config": "^1.0.3",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react-swc": "^3.0.0",
+    "gray-matter": "^4.0.3",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
-  }
+  },
+  "prettier": "@tbosmans/eslint-config/prettierrc"
 }
