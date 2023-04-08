@@ -1,6 +1,5 @@
 {
-  "name": "blog",
-  "private": true,
+  "name": "tombosmans.github.io",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -11,8 +10,6 @@
     "posts:create": "ts-node --esm --swc  scripts/create-post.ts"
   },
   "dependencies": {
-    "@types/react-syntax-highlighter": "^15.5.6",
-    "grey-matter": "^0.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jss": "^10.10.0",
@@ -24,6 +21,7 @@
     "@tbosmans/eslint-config": "^1.0.3",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/react-syntax-highlighter": "^15.5.6",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "gray-matter": "^4.0.3",
     "ts-node": "^10.9.1",
