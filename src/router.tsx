@@ -1,9 +1,9 @@
-import { createBrowserRouter } from "react-router-dom"
+import { createHashRouter } from "react-router-dom"
 import BlogPage from "./pages/blog.page"
 import PostPage from "./pages/post.page"
 import posts from "./posts.json"
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "*",
     element: <BlogPage />,
