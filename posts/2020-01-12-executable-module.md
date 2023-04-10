@@ -4,7 +4,6 @@ date: 2020-01-12
 tags: ruby, rails
 ---
 
-# Executable module
 When writing classes in Ruby, it's a good practice to keep them small and focused on doing one thing.
 These small classes are easier to read, test and maintain.
 A common pattern for these classes is to have a single public method named `execute` or `call`,

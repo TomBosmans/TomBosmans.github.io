@@ -3,7 +3,6 @@ title: Replication with mysql 5.7
 date: 2020-01-22
 tags: mysql, replication
 ---
-# Replication with mysql 5.7
 ## Before we get started
 you will get to see a lot of `master` and `slave` as that is the terminology mysql 5.7 still uses.
 When you start to [google](https://duckduckgo.com/) it you might come across the newer terminology being `primary` and `replica`.

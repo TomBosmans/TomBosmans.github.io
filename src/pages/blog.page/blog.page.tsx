@@ -1,21 +1,23 @@
-import { Link, useLoaderData } from "react-router-dom"
+import Grid from "src/components/grid.component"
+import NavLink from "src/components/nav-link.component"
 import PostData from "src/types/post-data.type"
-import { useBlogPageStyles } from "./blog.page.styles"
+import Stack from "src/components/stack.component"
+import Typography from "src/components/typography.component"
+import usePageData from "src/hooks/use-page-data.hook"
 
 export const BlogPage = () => {
-  const posts = useLoaderData() as PostData[]
-  const classes = useBlogPageStyles()
+  const posts = usePageData<PostData[]>()
 
   return (
-    <div className={classes.container}>
+    <Stack spacing={2}>
       {posts.map((post) => (
-        <div key={post.slug} className={classes.post}>
-          <Link to={`/${post.slug}`} className={classes.title}>
+        <Grid key={post.slug}>
+          <NavLink sx={{ fontWeight: "bold" }} to={`/${post.slug}`}>
             {post.title}
-          </Link>
-          <div className={classes.date}>{post.date}</div>
-        </div>
+          </NavLink>
+          <Typography level="body2">{post.date}</Typography>
+        </Grid>
       ))}
-    </div>
+    </Stack>
   )
 }

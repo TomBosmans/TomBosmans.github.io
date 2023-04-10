@@ -3,8 +3,6 @@ title: "How to Automatically Publish Your NPM Packages with GitHub Actions"
 date: "2023-04-03"
 tags: typescript, github, actions, publish, npm
 ---
-# Automating NPM Package Publishing with GitHub Actions
-
 As a developer, you may have encountered the tedious process of manually publishing a new version of your NPM package. Updating the version number, creating a new release on GitHub, and publishing the package on NPM can be time-consuming and error-prone. Fortunately, GitHub Actions provides an easy way to automate this process. In this tutorial, we'll create a workflow that automatically updates the version number, creates a new release, and publishes the package on NPM.
 
 ## Workflow Overview

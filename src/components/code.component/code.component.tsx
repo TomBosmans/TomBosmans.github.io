@@ -1,6 +1,11 @@
-import SyntaxHighlighter from "../syntax-highlighter.component"
+import SyntaxHighlighter from "src/components/syntax-highlighter.component"
+import Typography from "src/components/typography.component"
 import { CodeProps } from "./code.component.types"
 
 export const Code = ({ inline, ...props }: CodeProps) => {
-  return inline ? <code {...props} /> : <SyntaxHighlighter {...props} />
+  return inline ? (
+    <Typography variant="soft" level="body2" {...props} />
+  ) : (
+    <SyntaxHighlighter {...props} />
+  )
 }
