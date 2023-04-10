@@ -7,10 +7,10 @@ import {
 } from "react-syntax-highlighter/dist/esm/styles/prism"
 
 export const SyntaxHighlighter = ({ children, className, ...props }: SyntaxHighlighterProps) => {
-  const { mode } = useColorScheme()
+  const { colorScheme } = useColorScheme()
   const match = /language-(\w+)/.exec(className || "")
   const language = match?.[1]
-  const style = mode === "dark" ? darkStyle : lightStyle
+  const style = colorScheme === "dark" ? darkStyle : lightStyle
 
   return (
     <Prism {...props} style={style} language={language}>
