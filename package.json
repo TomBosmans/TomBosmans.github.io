@@ -6,8 +6,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "posts:build": "ts-node --esm --swc scripts/build-posts.ts",
-    "posts:create": "ts-node --esm --swc  scripts/create-post.ts"
+    "posts:build": "npx tsx scripts/build-posts.ts",
+    "posts:create": "npx tsx scripts/create-post.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
