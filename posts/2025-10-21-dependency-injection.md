@@ -1,30 +1,31 @@
 ---
-title: dependency injection
+title: Dependency Injection (DI)
 date: 2025-10-21
-tags: oop ioc pattern
+tags: oop, ioc, pattern
 ---
+## The problem
 
-## What is Dependency Injection?
-Dependency Injection (DI) might sound more complicated than it really is. Let’s start with a simple example:
+Imagine you have a class that depends on other classes:
 ```typescript 
 import MailService from "#services/mailService.js"
 import logger from "#logger"
 
 class InvitationService {
   private mailService = new MailService()
-  private logger: new Logger()
+  private logger = new Logger()
 
   public async invite(params: unknown) {
     this.mailService.sendMail(params)
     this.logger.info("invitation send with: ", params)
   }
 }
-
-const invitationService = new InvitationService()
 ```
+`InvitationService` creates `MailService` and `Logger` directly. If you want to switch to a `MockEmailService` for testing, you have to change `InvitationService` itself.
+You can't easily test the `InvitationService` without also invoking the `EmailService` and `Logger`, that is a problem for unit tests.
 
-In this example, the InvitationService depends directly on MailService and Logger. So how would this look if we used Dependency Injection instead?
 
+## The solution - What is Dependency Injection?
+Dependency Injection (DI) might sound more complicated than it really is. Let’s start with a using it in our previous example:
 ```typescript
 import MailService from "#services/mailService.js"
 import logger from "#logger"
@@ -49,15 +50,15 @@ const logger = new Logger()
 const invitationService = new InvitationService(mailService, logger)
 ```
 
-At first glance, this looks like more work—we now have to initialize and pass in the dependencies ourselves. So what’s the benefit?
 
+Now we can also use mocked versions of our dependencies:
 ```typescript
-const mailSerivce = mockService
+const mailService = mockService
 const logger = mockLogger
 const invitationService = new InvitationService(mailService, logger)
 ```
 
-By injecting dependencies, we can easily swap them out—for example, when testing. As long as the injected objects follow the same interface, our class doesn’t care about their concrete implementations. This is where TypeScript really shines.
+By injecting dependencies, we can easily swap them out. As long as the injected objects follow the same interface, our class doesn’t care about their concrete implementations. This is where typed language like TypeScript really shines.
 
 ```typescript
 interface MailService {
@@ -65,10 +66,7 @@ interface MailService {
 }
 
 interface Logger {
-  log(): void
   info(): void
-  error(): void
-  warn(): void
 }
 
 class InvitationService {
@@ -86,10 +84,8 @@ class InvitationService {
   }
 }
 ```
-As you can see, the InvitationService class no longer depends on any specific implementation—it simply expects certain dependencies to be provided through its constructor.
-As long as those dependencies match the expected interfaces, everything works seamlessly.
-
-## Dependency Injection Container
+As you can see, the InvitationService class no longer depends on any specific implementation, instead it relies on abstractions (interfaces). This makes the class flexible and easy to test, because you can swap in any object that implements the expected interfaces—like a mock or alternative service, without changing InvitationService itself.
+## The cost and how to mitigate it - Dependency Injection Container
 
 You might be thinking: “Okay, but what if my dependencies have dependencies, and those dependencies have dependencies, and so on?”
 
@@ -108,10 +104,10 @@ container.register("invitaionService", InvitationService)
 const invitationService = container.resolve("invitationService")
 ```
 
-This is pseudo-code, but it illustrates the concept: you register all your dependencies in the container, and it handles the wiring for you. Now, when you resolve something (like invitationService), the container automatically injects the right dependencies.
+This is pseudo-code, but it illustrates the concept: you register all your dependencies in the container, and it automatically wires them together. When you resolve something (like invitationService), the container injects all required dependencies for you, even if those dependencies have their own dependencies.
 
 Frameworks like [Nestjs](https://docs.nestjs.com/fundamentals/custom-providers) come with a DI container built-in. Alternatively, you can use standalone libraries like [inversify](https://inversify.io/) or my personal favorite [Awilix](https://github.com/jeffijoe/awilix) as it doesn't need decorators.
 
-## The benefits
+## Conclusion
 
 DI might seem like extra effort at first, but it gives you flexible, testable, and decoupled code — and thanks to containers, that "extra effort" is almost nothing.
