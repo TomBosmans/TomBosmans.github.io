@@ -3,6 +3,8 @@ import Code from "src/components/code.component"
 import Link from "src/components/link.component"
 import Typography from "src/components/typography.component"
 import type { Components } from "react-markdown"
+import Table from "src/components/table.component"
+import Blockquote from "../blockquote.component"
 
 export const components: Components = {
   code: ({ node: _node, ...props }) => <Code {...props} />,
@@ -27,4 +29,10 @@ export const components: Components = {
   h4: ({ children }) => <Typography level="h4">{children}</Typography>,
   h5: ({ children }) => <Typography level="h5">{children}</Typography>,
   h6: ({ children }) => <Typography level="h6">{children}</Typography>,
+  blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
+  table: ({ children }) => (
+    <Table variant="plain" size="md" sx={{ marginBottom: 2, marginTop: 2 }}>
+      {children}
+    </Table>
+  ),
 }

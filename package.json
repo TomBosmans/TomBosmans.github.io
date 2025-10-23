@@ -16,9 +16,10 @@
     "@mui/joy": "^5.0.0-alpha.74",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.6",
+    "react-markdown": "^8.0.7",
     "react-router-dom": "^6.10.0",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-syntax-highlighter": "^15.5.0",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@tbosmans/eslint-config": "^1.0.3",
