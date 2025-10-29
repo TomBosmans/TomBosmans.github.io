@@ -19,16 +19,40 @@ export const components: Components = {
     </li>
   ),
   p: ({ children }) => (
-    <Typography level="body1" gutterBottom={true}>
+    <Typography level="body1" gutterBottom>
       {children}
     </Typography>
   ),
-  h1: ({ children }) => <Typography level="h1">{children}</Typography>,
-  h2: ({ children }) => <Typography level="h2">{children}</Typography>,
-  h3: ({ children }) => <Typography level="h3">{children}</Typography>,
-  h4: ({ children }) => <Typography level="h4">{children}</Typography>,
-  h5: ({ children }) => <Typography level="h5">{children}</Typography>,
-  h6: ({ children }) => <Typography level="h6">{children}</Typography>,
+  h1: ({ children }) => (
+    <Typography level="h1" gutterBottom>
+      {children}
+    </Typography>
+  ),
+  h2: ({ children }) => (
+    <Typography level="h2" gutterBottom>
+      {children}
+    </Typography>
+  ),
+  h3: ({ children }) => (
+    <Typography level="h3" gutterBottom>
+      {children}
+    </Typography>
+  ),
+  h4: ({ children }) => (
+    <Typography level="h4" gutterBottom>
+      {children}
+    </Typography>
+  ),
+  h5: ({ children }) => (
+    <Typography level="h5" gutterBottom>
+      {children}
+    </Typography>
+  ),
+  h6: ({ children }) => (
+    <Typography level="h6" gutterBottom>
+      {children}
+    </Typography>
+  ),
   blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
   table: ({ children }) => (
     <Table variant="plain" size="md" sx={{ marginBottom: 2, marginTop: 2 }}>
